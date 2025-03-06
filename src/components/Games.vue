@@ -4,7 +4,7 @@
       v-for="game in games"
       :key="game.id"
       class="game-hero"
-      :style="{ backgroundImage: 'url(' + 'require(' + game.image + '))' }"
+      :style="{ backgroundImage: 'url(' +  game.image + ')' }"
     >
       <div class="overlay"></div>
       <div class="hero-content">
@@ -57,7 +57,7 @@ export default {
           id: 1,
           title: "Boss Breaker",
           description: "A twin-stick beat 'em up about punching everything in your way in order to overthrow your corporate overlord.",
-          image: "./src/assets/images/boss_breaker_header.png",
+          image: "assets/images/boss_breaker_header.png",
           buttons: [
             {
               title: "Steam",
@@ -73,7 +73,7 @@ export default {
           id: 2,
           title: "Owlchemist",
           description: "A short precision-platformer made for the 2024 Pirate Software Game Jam.",
-          image: "./src/assets/images/owlchemist.png",
+          image: "assets/images/owlchemist.png",
           buttons: [
             {
               title: "Itch.io",
@@ -85,7 +85,7 @@ export default {
           id: 3,
           title: "Slime Corp",
           description: "A simple top-down shooter based around collecting slime.",
-          image: "./src/assets/images/slimecorp.png",
+          image: "assets/images/slimecorp.png",
           buttons: [
             {
               title: "Steam",
@@ -105,7 +105,7 @@ export default {
           id: 4,
           title: "Pulse Jumper",
           description: "Jump with a shotgun.",
-          image: "./src/assets/images/pulsejumper.jpg",
+          image: "assets/images/pulsejumper.jpg",
           buttons: [
             {
               title: "Steam",
