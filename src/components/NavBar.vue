@@ -135,7 +135,7 @@ export default {
   }
   .nav-links li {
     margin: 1rem 0;
-  }\
+  }
   .logo img {
     max-width: 120px;
   }
