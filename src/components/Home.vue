@@ -9,7 +9,8 @@
           <div class="hero-transition"></div>
         </div>
         <div class="hero-overlay">
-          <img rel="preload"
+          <img
+            rel="preload"
             src="@/assets/images/fifth-edge-translucent-bg.png"
             alt="Fifth Edge Logo"
             class="hero-logo"
@@ -68,7 +69,7 @@ export default {
   padding: 0 1rem;
 }
 
-.hero-overlay h1 {
+.hero-overlay h2 {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
@@ -76,11 +77,6 @@ export default {
 .hero-logo {
   max-width: 700px;
   margin-bottom: -2rem;
-}
-
-.hero-overlay p {
-  font-size: 1.5rem;
-  margin-bottom: 3rem;
 }
 
 .btn {
@@ -115,6 +111,36 @@ export default {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+  .hero-overlay {
+    top: auto;
+    transform: translateY(0);
+    padding: 1rem;
+  }
+  .hero-overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .hero-logo {
+    max-width: 90%;
+    margin-bottom: 1rem;
+  }
+  .video {
+    filter: brightness(0.7) blur(10px);
+  }
+  .hero-transition {
+    height: 100px;
+  }
+  .home {
+    margin-top: 0;
   }
 }
 </style>

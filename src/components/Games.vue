@@ -27,17 +27,21 @@
       <h2>Screenshot Gallery</h2>
       <div class="images">
         <img rel="preload" src="../assets/images/bb-01.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/pj-04.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/bb-02.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/owl-01.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/bb-03.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/pj-01.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/sc-01.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/bb-06.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/sc-02.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/owl-02.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/pj-03.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/bb-04.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/owl-04.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/sc-03.png" alt="Screenshot" />
         <img rel="preload" src="../assets/images/bb-05.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/pj-02.png" alt="Screenshot" />
       </div>
     </div>
   </div>
@@ -74,6 +78,38 @@ export default {
             {
               title: "Itch.io",
               link: "https://fifthedgestudios.itch.io/owlchemist"
+            }
+          ],
+        },
+        {
+          id: 3,
+          title: "Slime Corp",
+          description: "A simple top-down shooter based around collecting slime.",
+          image: "./src/assets/images/slimecorp.png",
+          buttons: [
+            {
+              title: "Steam",
+              link: "https://store.steampowered.com/app/1949750/Slime_Corp/"
+            },
+            {
+              title: "Itch.io",
+              link: "https://fifthedgestudios.itch.io/slime-corp"
+            },
+            {
+              title: "GX.Games",
+              link: "https://gx.games/games/iygssc/slime-corp/"
+            }
+          ],
+        },
+        {
+          id: 4,
+          title: "Pulse Jumper",
+          description: "Jump with a shotgun.",
+          image: "./src/assets/images/pulsejumper.jpg",
+          buttons: [
+            {
+              title: "Steam",
+              link: "https://store.steampowered.com/app/1397760/Pulse_Jumper/"
             }
           ],
         },
