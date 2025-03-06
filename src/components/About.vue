@@ -1,4 +1,3 @@
-<!-- src/components/About.vue -->
 <template>
   <section class="about">
     <div class="about-container">
@@ -7,7 +6,6 @@
         We are a passionate team dedicated to crafting unforgettable gaming experiences.
         Our focus is on creativity, innovation, and community engagement.
       </p>
-      <img class="about-image" src="../assets/images/fifth-edge-translucent-bg.png" alt="About Us" />
     </div>
   </section>
 </template>

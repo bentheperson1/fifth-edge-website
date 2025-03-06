@@ -21,8 +21,15 @@ export default {
 
 <style>
 @font-face {
-  font-family: 'Helvetica Neue';
-  src: url('./assets/fonts/HelveticaNeueMedium.otf') format('opentype');
+  font-family: 'Poppins Bold';
+  src: url('./assets/fonts/Poppins-Bold.ttf');
+  font-weight: bold;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./assets/fonts/Poppins-Medium.ttf');
   font-weight: normal;
   font-style: normal;
 }
@@ -34,7 +41,7 @@ html, body {
   background-color: var(--background-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
 }
 
 #app {

@@ -1,21 +1,46 @@
-<!-- src/components/Games.vue -->
 <template>
-  <section class="games">
-    <div class="container">
-      <h2>Our Games</h2>
-      <div class="game-list">
-        <div class="game" v-for="game in games" :key="game.id">
-          <div class="game-images">
-            <img :src="game.image" :alt="game.title + ' main image'" />
-            <img v-if="game.image2" :src="game.image2" :alt="game.title + ' extra image'" />
-          </div>
-          <h3>{{ game.title }}</h3>
-          <p>{{ game.description }}</p>
-          <p class="overview">{{ game.overview }}</p>
+  <div class="games-container">
+    <section
+      v-for="game in games"
+      :key="game.id"
+      class="game-hero"
+      :style="{ backgroundImage: 'url(' + game.image + ')' }"
+    >
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1 class="game-title">{{ game.title }}</h1>
+        <p class="game-description">{{ game.description }}</p>
+        <div class="button-group">
+          <a
+            v-for="(btn, index) in game.buttons"
+            :key="index"
+            class="action-button"
+            :href="btn.link"
+            target="_blank"
+          >
+            {{ btn.title }}
+          </a>
         </div>
       </div>
+    </section>
+    <div class="gallery">
+      <h2>Screenshot Gallery</h2>
+      <div class="images">
+        <img rel="preload" src="../assets/images/bb-01.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/bb-02.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/owl-01.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/bb-03.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/sc-01.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/bb-06.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/sc-02.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/owl-02.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/bb-04.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/owl-04.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/sc-03.png" alt="Screenshot" />
+        <img rel="preload" src="../assets/images/bb-05.png" alt="Screenshot" />
+      </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -26,19 +51,31 @@ export default {
       games: [
         {
           id: 1,
-          title: "Game One",
-          description: "An exciting adventure game.",
-          overview: "Explore vast worlds and overcome challenges.",
-          image: "https://via.placeholder.com/300x200?text=Game+One+Main",
-          image2: "https://via.placeholder.com/300x200?text=Game+One+Extra",
+          title: "Boss Breaker",
+          description: "A twin-stick beat 'em up about punching everything in your way in order to overthrow your corporate overlord.",
+          image: "./src/assets/images/boss_breaker_header.png",
+          buttons: [
+            {
+              title: "Steam",
+              link: "https://store.steampowered.com/app/2869030/Boss_Breaker/"
+            },
+            {
+              title: "GX.Games",
+              link: "https://gx.games/games/5t65sb/boss-breaker/tracks/d7b6bbc6-99b8-497b-a300-28548874c67e/"
+            },
+          ],
         },
         {
           id: 2,
-          title: "Game Two",
-          description: "A thrilling action game.",
-          overview: "Experience fast-paced combat and epic battles.",
-          image: "https://via.placeholder.com/300x200?text=Game+Two+Main",
-          image2: "https://via.placeholder.com/300x200?text=Game+Two+Extra",
+          title: "Owlchemist",
+          description: "A short precision-platformer made for the 2024 Pirate Software Game Jam.",
+          image: "./src/assets/images/owlchemist.png",
+          buttons: [
+            {
+              title: "Itch.io",
+              link: "https://fifthedgestudios.itch.io/owlchemist"
+            }
+          ],
         },
       ],
     };
@@ -47,48 +84,124 @@ export default {
 </script>
 
 <style scoped>
-.games {
-  padding: 4rem 1rem;
+
+.gallery {
+  padding: 2rem 1rem;
   text-align: center;
+  background-color: var(--background-color);
 }
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-}
-.game-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-.game {
-  background: var(--primary-color);
-  color: var(--text-color);
-  padding: 1.5rem;
-  border-radius: 8px;
-  width: 300px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.game:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-.game-images {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+
+.gallery h2 {
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
-.game-images img {
-  width: 100%;
-  border-radius: 5px;
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
 }
-.overview {
-  font-size: 0.9rem;
-  opacity: 0.8;
+
+.images img {
+  width: calc(25% - 1rem);
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.images img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .images img {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 800px) {
+  .images img {
+    width: calc(100% - 1rem);
+  }
+}
+
+.games-container {
+  overflow-x: hidden;
+}
+
+/* Full-screen hero section for each game */
+.game-hero {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Overlay for better text contrast */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Content container with fade-in animation */
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  max-width: 600px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  animation-delay: 0.1s;
+}
+
+.game-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.game-description {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Button group styling */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.action-button {
+  padding: 1rem 2rem;
+  background: var(--secondary-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.action-button:hover {
+  background: #e03e00;
+}
+
+/* Fade-in animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

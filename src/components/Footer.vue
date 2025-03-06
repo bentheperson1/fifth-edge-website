@@ -1,11 +1,10 @@
-<!-- src/components/Footer.vue -->
 <template>
   <footer class="footer">
     <div class="links">
-      <a href="https://discord.com/invite/yourserver" target="_blank">Discord</a>
-      <a href="https://steamcommunity.com/id/yourprofile" target="_blank">Steam</a>
-      <a href="https://yourcompany.itch.io" target="_blank">Itch.io</a>
-      <a href="https://blueskyweb.xyz/yourprofile" target="_blank">Bluesky</a>
+      <a href="https://discord.gg/RnfJTVMjrP" target="_blank">Discord</a>
+      <a href="https://store.steampowered.com/search/?developer=Fifth%20Edge%20Studios" target="_blank">Steam</a>
+      <a href="https://fifthedgestudios.itch.io" target="_blank">Itch.io</a>
+      <a href="https://bsky.app/profile/fifth-edge.bsky.social" target="_blank">Bluesky</a>
     </div>
     <p>&copy; {{ new Date().getFullYear() }} Fifth Edge Studios</p>
   </footer>

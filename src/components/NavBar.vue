@@ -1,9 +1,8 @@
-<!-- src/components/NavBar.vue -->
 <template>
   <nav class="navbar">
     <div class="nav-container">
       <router-link to="/" class="logo">
-        <img src="https://via.placeholder.com/150x50?text=Logo" alt="Company Logo" />
+        <img rel="preload" src="../assets/images/fifth_edge_text.png" alt="Fifth Edge Logo" />
       </router-link>
       <ul class="nav-links">
         <li><router-link to="/">Home</router-link></li>
@@ -26,7 +25,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(58, 58, 58, 0.8);
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   z-index: 1000;
@@ -40,7 +39,7 @@ export default {
   padding: 1rem 2rem;
 }
 .logo img {
-  height: 50px;
+  max-width: 150px;
 }
 .nav-links {
   list-style: none;
@@ -50,6 +49,7 @@ export default {
 }
 .nav-links li {
   margin-left: 2rem;
+  font-family: 'Poppins Bold';
 }
 .nav-links a {
   color: var(--text-color);
