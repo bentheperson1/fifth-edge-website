@@ -165,7 +165,6 @@ export default {
   overflow-x: hidden;
 }
 
-/* Full-screen hero section for each game */
 .game-hero {
   position: relative;
   height: 100vh;
@@ -176,7 +175,6 @@ export default {
   justify-content: center;
 }
 
-/* Overlay for better text contrast */
 .overlay {
   position: absolute;
   top: 0;
@@ -186,7 +184,6 @@ export default {
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* Content container with fade-in animation */
 .hero-content {
   position: relative;
   text-align: center;
@@ -207,7 +204,6 @@ export default {
   margin-bottom: 2rem;
 }
 
-/* Button group styling */
 .button-group {
   display: flex;
   flex-wrap: wrap;
@@ -229,7 +225,6 @@ export default {
   background: #e03e00;
 }
 
-/* Fade-in animation keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;

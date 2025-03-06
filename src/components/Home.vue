@@ -114,7 +114,6 @@ export default {
   }
 }
 
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .hero {
     height: auto;
