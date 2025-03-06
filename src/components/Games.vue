@@ -4,7 +4,7 @@
       v-for="game in games"
       :key="game.id"
       class="game-hero"
-      :style="{ backgroundImage: 'url(' +  game.image + ')' }"
+      :style="{ backgroundImage: game.image }"
     >
       <div class="overlay"></div>
       <div class="hero-content">
