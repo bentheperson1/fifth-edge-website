@@ -2,46 +2,33 @@
   <section class="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <form @submit.prevent="submitForm" class="contact-form">
-        <div class="form-group">
-          <label>Name:</label>
-          <input type="text" v-model="form.name" required />
-        </div>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="email" v-model="form.email" required />
-        </div>
-        <div class="form-group">
-          <label>Message:</label>
-          <textarea v-model="form.message" required></textarea>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+      <h3>We love hearing from you!</h3>
+      <br>
+      <ul class="contact-list">
+        <li>
+          <strong>Discord Server:</strong>
+          <a href="https://discord.gg/RnfJTVMjrP" target="_blank" rel="noopener noreferrer">
+            Join Here!
+          </a>
+        </li>
+        <li>
+          <strong>Staff Email: </strong>
+          <a href="mailto:staff@fifthedgestudios.com">staff@fifthedgestudios.com</a>
+        </li>
+        <li>
+          <strong>BlueSky:</strong>
+          <a href="https://bsky.app/profile/fifth-edge.bsky.social" target="_blank" rel="noopener noreferrer">
+            @fifth-edge
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "Contact",
-  data() {
-    return {
-      form: {
-        name: "",
-        email: "",
-        message: "",
-      },
-    };
-  },
-  methods: {
-    submitForm() {
-      // Replace with your form submission logic (e.g., an API call)
-      alert("Message sent!");
-      this.form.name = "";
-      this.form.email = "";
-      this.form.message = "";
-    },
-  },
+  name: "Contact"
 };
 </script>
 
@@ -58,37 +45,20 @@ h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
-.contact-form {
-  text-align: left;
+.contact-list {
+  list-style: none;
+  padding: 0;
 }
-.form-group {
-  margin-bottom: 1.5rem;
+.contact-list li {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+.contact-list a {
+  color: #007bff;
+  text-decoration: none;
 }
-input,
-textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-.btn {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 1rem;
-}
-.btn:hover {
-  background-color: var(--primary-color);
+.contact-list a:hover {
+  text-decoration: underline;
 }
 </style>

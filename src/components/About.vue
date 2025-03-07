@@ -3,8 +3,19 @@
     <div class="about-container">
       <h2>About Us</h2>
       <p>
-        We are a passionate team dedicated to crafting unforgettable gaming experiences.
-        Our focus is on creativity, innovation, and community engagement.
+        Hey there! We're a team of gamers and developers who love making fun, engaging 2D pixel-styled games. We kicked off this adventure in 2019, and it's been a fantastic ride ever since.
+      </p>
+      <p>
+        Our entire crew is completely remote, which means we work from all corners of the globe. This mix of backgrounds really sparks our creativity and keeps our projects fresh.
+      </p>
+      <p>
+        Over the years, we've released several games that we're super proud of. Every game is a project we pour our hearts into, and we love sharing our passion with you.
+      </p>
+      <p>
+        Thanks for dropping by and learning a bit about us. We hope you enjoy our games as much as we enjoy making them!
+      </p>
+      <p>
+        - Ben (Founder of Fifth Edge)
       </p>
     </div>
   </section>
@@ -31,7 +42,7 @@ export default {
 }
 .about p {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 .about-image {
