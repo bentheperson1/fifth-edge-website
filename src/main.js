@@ -1,9 +1,36 @@
-// src/main.js
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
+import { createHead } from '@vueuse/head';
 
 const app = createApp(App);
+const head = createHead();
+
+head.addHeadObjs({
+  title: 'Fifth Edge Studios',
+  meta: [
+    { name: 'description', content: 'An indie game studio dedicated to making memorable and enjoyable 2D games.' },
+    { property: 'og:title', content: 'Fifth Edge Studios' },
+    { property: 'og:description', content: 'An indie game studio dedicated to making memorable and enjoyable 2D games.' },
+    { property: 'og:image', content: '~@/assets/images/fifth_edge_banner.png' },
+    { property: 'og:url', content: 'https://fifthedgestudios.com' },
+    { property: 'og:type', content: 'website' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://fifthedgestudios.com' }
+  ],
+  script: [
+    {
+      src: 'https://platform.twitter.com/widgets.js',
+      async: true,
+      defer: true,
+      crossorigin: 'anonymous'
+    }
+  ]
+});
+
+app.use(head);
+app.use(router);
 
 // Fetch theme from server and set CSS variables for a dark, Valve-inspired theme
 fetch('/api/theme')
@@ -24,5 +51,4 @@ fetch('/api/theme')
     root.style.setProperty('--text-color', '#ffffff');
   });
 
-app.use(router);
 app.mount('#app');
