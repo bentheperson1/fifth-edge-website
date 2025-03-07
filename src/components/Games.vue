@@ -4,7 +4,7 @@
       v-for="game in games"
       :key="game.id"
       class="game-hero"
-      :style="{ backgroundImage: game.image }"
+      :style="{ backgroundImage: `url(${game.image})` }"
     >
       <div class="overlay"></div>
       <div class="hero-content">
@@ -48,6 +48,11 @@
 </template>
 
 <script>
+import bossBreakerHeader from '@/assets/images/boss_breaker_header.png';
+import owlchemistImage from '@/assets/images/owlchemist.png';
+import slimecorpImage from '@/assets/images/slimecorp.png';
+import pulsejumperImage from '@/assets/images/pulsejumper.jpg';
+
 export default {
   name: "Games",
   data() {
@@ -56,61 +61,64 @@ export default {
         {
           id: 1,
           title: "Boss Breaker",
-          description: "A twin-stick beat 'em up about punching everything in your way in order to overthrow your corporate overlord.",
-          image: "assets/images/boss_breaker_header.png",
+          description:
+            "A twin-stick beat 'em up about punching everything in your way in order to overthrow your corporate overlord.",
+          image: bossBreakerHeader,
           buttons: [
             {
               title: "Steam",
-              link: "https://store.steampowered.com/app/2869030/Boss_Breaker/"
+              link: "https://store.steampowered.com/app/2869030/Boss_Breaker/",
             },
             {
               title: "GX.Games",
-              link: "https://gx.games/games/5t65sb/boss-breaker/tracks/d7b6bbc6-99b8-497b-a300-28548874c67e/"
+              link: "https://gx.games/games/5t65sb/boss-breaker/tracks/d7b6bbc6-99b8-497b-a300-28548874c67e/",
             },
           ],
         },
         {
           id: 2,
           title: "Owlchemist",
-          description: "A short precision-platformer made for the 2024 Pirate Software Game Jam.",
-          image: "assets/images/owlchemist.png",
+          description:
+            "A short precision-platformer made for the 2024 Pirate Software Game Jam.",
+          image: owlchemistImage,
           buttons: [
             {
               title: "Itch.io",
-              link: "https://fifthedgestudios.itch.io/owlchemist"
-            }
+              link: "https://fifthedgestudios.itch.io/owlchemist",
+            },
           ],
         },
         {
           id: 3,
           title: "Slime Corp",
-          description: "A simple top-down shooter based around collecting slime.",
-          image: "assets/images/slimecorp.png",
+          description:
+            "A simple top-down shooter based around collecting slime.",
+          image: slimecorpImage,
           buttons: [
             {
               title: "Steam",
-              link: "https://store.steampowered.com/app/1949750/Slime_Corp/"
+              link: "https://store.steampowered.com/app/1949750/Slime_Corp/",
             },
             {
               title: "Itch.io",
-              link: "https://fifthedgestudios.itch.io/slime-corp"
+              link: "https://fifthedgestudios.itch.io/slime-corp",
             },
             {
               title: "GX.Games",
-              link: "https://gx.games/games/iygssc/slime-corp/"
-            }
+              link: "https://gx.games/games/iygssc/slime-corp/",
+            },
           ],
         },
         {
           id: 4,
           title: "Pulse Jumper",
           description: "Jump with a shotgun.",
-          image: "assets/images/pulsejumper.jpg",
+          image: pulsejumperImage,
           buttons: [
             {
               title: "Steam",
-              link: "https://store.steampowered.com/app/1397760/Pulse_Jumper/"
-            }
+              link: "https://store.steampowered.com/app/1397760/Pulse_Jumper/",
+            },
           ],
         },
       ],
@@ -120,7 +128,6 @@ export default {
 </script>
 
 <style scoped>
-
 .gallery {
   padding: 2rem 1rem;
   text-align: center;
