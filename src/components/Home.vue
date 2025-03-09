@@ -11,7 +11,7 @@
         <div class="hero-overlay">
           <img
             rel="preload"
-            src="@/assets/images/fifth_edge_logo.png"
+            :src=logo
             alt="Fifth Edge Logo"
             class="hero-logo"
           />
@@ -23,10 +23,15 @@
 </template>
 
 <script>
-import logo from "@/assets/images/fifth_edge_logo.png"
+import logoimg from "@/assets/images/fifth_edge_logo.png"
 
 export default {
-  name: "Home"
+  name: "Home",
+  data() {
+    return {
+      logo: logoimg
+    }
+  }
 };
 </script>
 

@@ -5,7 +5,7 @@
       <h3>We love hearing from you!</h3>
 
       <div v-if="!submitted">
-        <form class="contact-form" @submit.prevent="submitForm" netlify>
+        <form class="contact-form" method="POST" data-netlify="true" @submit.prevent="submitForm" netlify>
           <div class="form-group">
             <label for="name">Name</label>
             <input
