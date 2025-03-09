@@ -16,14 +16,14 @@
       </div>
       <ul class="nav-links" :class="{ open: isOpen }">
         <li>
-          <router-link to="/" @click.native="closeMenu">Home</router-link>
+          <router-link to="/games" @click.native="closeMenu">Games</router-link>
         </li>
         <li>
           <router-link to="/about" @click.native="closeMenu">About</router-link>
         </li>
-        <li>
-          <router-link to="/games" @click.native="closeMenu">Games</router-link>
-        </li>
+        <!--<li>
+          <router-link to="/press" @click.native="closeMenu">Press</router-link>
+        </li> -->
         <li>
           <router-link to="/contact" @click.native="closeMenu">Contact</router-link>
         </li>
@@ -73,7 +73,7 @@ export default {
 }
 
 .logo img {
-  max-width: 150px;
+  max-width: 200px;
 }
 
 .nav-links {

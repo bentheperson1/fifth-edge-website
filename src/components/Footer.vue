@@ -6,7 +6,10 @@
       <a href="https://fifthedgestudios.itch.io" target="_blank">Itch.io</a>
       <a href="https://bsky.app/profile/fifth-edge.bsky.social" target="_blank">Bluesky</a>
     </div>
-    <p>&copy; {{ new Date().getFullYear() }} Fifth Edge Studios</p>
+    <div class="links">
+      <a href="mailto:staff@fifthedgestudios.com">staff@fifthedgestudios.com</a>
+    </div>
+    <p>&copy;{{ new Date().getFullYear() }} Fifth Edge Studios</p>
   </footer>
 </template>
 
@@ -20,7 +23,7 @@ export default {
 .footer {
   background-color: var(--primary-color);
   color: var(--text-color);
-  padding: 1.5rem;
+  padding: 2rem;
   text-align: center;
 }
 .links {

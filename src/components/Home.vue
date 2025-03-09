@@ -11,7 +11,7 @@
         <div class="hero-overlay">
           <img
             rel="preload"
-            src="@/assets/images/fifth-edge-translucent-bg.png"
+            src="@/assets/images/fifth_edge_logo.png"
             alt="Fifth Edge Logo"
             class="hero-logo"
           />

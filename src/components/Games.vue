@@ -23,26 +23,24 @@
         </div>
       </div>
     </section>
+
     <div class="gallery">
       <h2>Screenshot Gallery</h2>
       <div class="images">
-        <img rel="preload" src="../assets/images/bb-01.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/pj-04.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/bb-02.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/owl-01.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/bb-03.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/pj-01.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/sc-01.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/bb-06.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/sc-02.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/owl-02.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/pj-03.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/bb-04.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/owl-04.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/sc-03.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/bb-05.png" alt="Screenshot" />
-        <img rel="preload" src="../assets/images/pj-02.png" alt="Screenshot" />
+        <img
+          v-for="(screenshot, index) in screenshots"
+          :key="index"
+          :src="screenshot"
+          alt="Screenshot"
+          @click="openFullscreen(screenshot)"
+        />
       </div>
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div class="fullscreen-modal" v-if="fullscreenImage" @click="closeFullscreen">
+      <img :src="fullscreenImage" alt="Fullscreen Screenshot" />
+      <button class="close-button" @click.stop="closeFullscreen">×</button>
     </div>
   </div>
 </template>
@@ -52,6 +50,24 @@ import bossBreakerHeader from '@/assets/images/boss_breaker_header.png';
 import owlchemistImage from '@/assets/images/owlchemist.png';
 import slimecorpImage from '@/assets/images/slimecorp.png';
 import pulsejumperImage from '@/assets/images/pulsejumper.jpg';
+
+// Import screenshot images using ES module syntax
+import bb01 from '@/assets/images/bb-01.png';
+import pj04 from '@/assets/images/pj-04.png';
+import bb02 from '@/assets/images/bb-02.png';
+import owl01 from '@/assets/images/owl-01.png';
+import bb03 from '@/assets/images/bb-03.png';
+import pj01 from '@/assets/images/pj-01.png';
+import sc01 from '@/assets/images/sc-01.png';
+import bb06 from '@/assets/images/bb-06.png';
+import sc02 from '@/assets/images/sc-02.png';
+import owl02 from '@/assets/images/owl-02.png';
+import pj03 from '@/assets/images/pj-03.png';
+import bb04 from '@/assets/images/bb-04.png';
+import owl04 from '@/assets/images/owl-04.png';
+import sc03 from '@/assets/images/sc-03.png';
+import bb05 from '@/assets/images/bb-05.png';
+import pj02 from '@/assets/images/pj-02.png';
 
 export default {
   name: "Games",
@@ -122,7 +138,34 @@ export default {
           ],
         },
       ],
+      fullscreenImage: null,
+      screenshots: [
+        bb01,
+        pj04,
+        bb02,
+        owl01,
+        bb03,
+        pj01,
+        sc01,
+        bb06,
+        sc02,
+        owl02,
+        pj03,
+        bb04,
+        owl04,
+        sc03,
+        bb05,
+        pj02,
+      ],
     };
+  },
+  methods: {
+    openFullscreen(image) {
+      this.fullscreenImage = image;
+    },
+    closeFullscreen() {
+      this.fullscreenImage = null;
+    },
   },
 };
 </script>
@@ -150,6 +193,7 @@ export default {
   width: calc(25% - 1rem);
   border-radius: 12px;
   transition: transform 0.3s;
+  cursor: pointer;
 }
 
 .images img:hover {
@@ -241,5 +285,35 @@ export default {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.fullscreen-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
 }
 </style>
