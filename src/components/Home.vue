@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import logo from "@/assets/images/fifth_edge_logo.png"
+
 export default {
   name: "Home"
 };
