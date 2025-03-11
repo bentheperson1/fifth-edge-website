@@ -5,10 +5,11 @@
       <h3>We love hearing from you!</h3>
 
       <div v-if="!submitted">
-        <form class="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="submitForm">
+        <form name="contact-form" class="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="submitForm">
           <div class="form-group">
             <label for="name">Name</label>
             <input
+              name="name"
               type="text"
               id="name"
               v-model="form.name"
@@ -19,6 +20,7 @@
           <div class="form-group">
             <label for="email">Email</label>
             <input
+              name="email"
               type="email"
               id="email"
               v-model="form.email"
@@ -29,6 +31,7 @@
           <div class="form-group">
             <label for="message">Message</label>
             <textarea
+              name="message"
               id="message"
               v-model="form.message"
               placeholder="Your message"
