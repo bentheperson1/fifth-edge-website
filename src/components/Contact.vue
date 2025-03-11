@@ -2,50 +2,14 @@
   <section class="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <h3>We love hearing from you!</h3>
+      <br>
 
-      <div v-if="!submitted">
-        <form name="contact-form" class="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field" @submit.prevent="submitForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              name="name"
-              type="text"
-              id="name"
-              v-model="form.name"
-              placeholder="Your name"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              name="email"
-              type="email"
-              id="email"
-              v-model="form.email"
-              placeholder="Your email"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea
-              name="message"
-              id="message"
-              v-model="form.message"
-              placeholder="Your message"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-
-      <div v-else>
-        <p>Thank you for your message. We will get back to you soon!</p>
-      </div>
+      <h1>
+        Press & General Contact: <a href="mailto:staff@fifthedgestudios.com">staff@fifthedgestudios.com</a>
+      </h1>
+      <h1>
+        Direct Contact to Lead Dev: <a href="mailto:ben@fifthedgestudios.com">ben@fifthedgestudios.com</a>
+      </h1>
     </div>
   </section>
 </template>
@@ -91,7 +55,9 @@ h2 {
 h3 {
   color: #cccccc;
 }
-
+a {
+  color: var(--secondary-color);
+}
 .contact-form {
   margin-top: 2rem;
   text-align: left;
