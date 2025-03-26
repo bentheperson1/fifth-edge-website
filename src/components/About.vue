@@ -67,6 +67,7 @@ import adenPicture from "@/assets/images/aden.png";
 import snowyPicture from "@/assets/images/snowy.png";
 import lucaPicture from "@/assets/images/luca.png";
 import antonPicture from "@/assets/images/anton.png";
+import jackPicture from "@/assets/images/jack.png";
 
 import about1 from "@/assets/images/about1.jpg"
 
@@ -82,7 +83,7 @@ export default {
         {
           name: "Ben",
           image: benPicture,
-          titles: ["Founder", "Programmer"],
+          titles: ["Founder", "Lead Developer"],
           games: ["Boss Breaker", "Owlchemist", "Slime Corp", "Pulse Jumper"],
           socials: [
             { platform: "Portfolio", link: "https://benholland.xyz/" },
@@ -97,6 +98,15 @@ export default {
           socials: [
             { platform: "Itch.io", link: "https://ajtheapple.itch.io/" },
             { platform: "Twitter", link: "https://x.com/AJTheApple" }
+          ]
+        },
+        {
+          name: "Jack",
+          image: jackPicture,
+          titles: ["Business Development Manager"],
+          games: ["Retro Quest"],
+          socials: [
+            { platform: "Bluesky", link: "https://bsky.app/profile/fifth-edge.bsky.social/" },
           ]
         },
         {
