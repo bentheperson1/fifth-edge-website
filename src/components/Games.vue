@@ -24,7 +24,7 @@
       </div>
     </section>
 
-    <div class="gallery">
+    <!-- <div class="gallery">
       <h2>Screenshot Gallery</h2>
       <div class="images">
         <img
@@ -37,11 +37,10 @@
       </div>
     </div>
 
-    <!-- Fullscreen Modal -->
     <div class="fullscreen-modal" v-if="fullscreenImage" @click="closeFullscreen">
       <img :src="fullscreenImage" alt="Fullscreen Screenshot" />
       <button class="close-button" @click.stop="closeFullscreen">×</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -49,7 +48,7 @@
 import bossBreakerHeader from '@/assets/images/boss_breaker_header.png';
 import owlchemistImage from '@/assets/images/owlchemist.png';
 import slimecorpImage from '@/assets/images/slimecorp.png';
-import pulsejumperImage from '@/assets/images/pulsejumper.jpg';
+import runnerimage from '@/assets/images/runner-banner.png';
 
 // Import screenshot images using ES module syntax
 import bb01 from '@/assets/images/bb-01.png';
@@ -76,6 +75,22 @@ export default {
       games: [
         {
           id: 1,
+          title: "Runner Overdrive",
+          description: "Keep the world running, one delivery at a time.",
+          image: runnerimage,
+          buttons: [
+            {
+              title: "Steam",
+              link: "https://store.steampowered.com/app/4507450/Runner_Overdrive/",
+            },
+            {
+              title: "Itch.io",
+              link: "https://fifthedgestudios.itch.io/runner-overdrive",
+            },
+          ],
+        },
+        {
+          id: 2,
           title: "Boss Breaker",
           description:
             "A twin-stick beat 'em up about punching everything in your way in order to overthrow your corporate overlord.",
@@ -92,7 +107,7 @@ export default {
           ],
         },
         {
-          id: 2,
+          id: 3,
           title: "Owlchemist",
           description:
             "A short precision-platformer made for the 2024 Pirate Software Game Jam.",
@@ -105,7 +120,7 @@ export default {
           ],
         },
         {
-          id: 3,
+          id: 4,
           title: "Slime Corp",
           description:
             "A simple top-down shooter based around collecting slime.",
@@ -122,18 +137,6 @@ export default {
             {
               title: "GX.Games",
               link: "https://gx.games/games/iygssc/slime-corp/",
-            },
-          ],
-        },
-        {
-          id: 4,
-          title: "Pulse Jumper",
-          description: "Jump with a shotgun.",
-          image: pulsejumperImage,
-          buttons: [
-            {
-              title: "Steam",
-              link: "https://store.steampowered.com/app/1397760/Pulse_Jumper/",
             },
           ],
         },

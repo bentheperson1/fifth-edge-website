@@ -31,7 +31,7 @@
 
     <!-- Team Members in a horizontal row -->
     <section class="team-section">
-      <h2>Team</h2>
+      <h2>The Team</h2>
       <div class="team-grid">
         <div
           class="team-member"
@@ -64,10 +64,7 @@
 <script>
 import benPicture from "@/assets/images/ben.png";
 import adenPicture from "@/assets/images/aden.png";
-import snowyPicture from "@/assets/images/snowy.png";
-import lucaPicture from "@/assets/images/luca.png";
-import antonPicture from "@/assets/images/anton.png";
-import jackPicture from "@/assets/images/jack.png";
+import snowyPicture from "@/assets/images/snowy.jpg";
 
 import about1 from "@/assets/images/about1.jpg"
 
@@ -83,7 +80,7 @@ export default {
         {
           name: "Ben",
           image: benPicture,
-          titles: ["Founder", "Lead Developer"],
+          titles: ["Founde & Lead Developer"],
           games: ["Boss Breaker", "Owlchemist", "Slime Corp", "Pulse Jumper"],
           socials: [
             { platform: "Portfolio", link: "https://benholland.xyz/" },
@@ -101,43 +98,15 @@ export default {
           ]
         },
         {
-          name: "Jack",
-          image: jackPicture,
-          titles: ["Business Development Manager"],
-          games: ["Retro Quest"],
-          socials: [
-            { platform: "Bluesky", link: "https://bsky.app/profile/fifth-edge.bsky.social/" },
-          ]
-        },
-        {
-          name: "Antonello",
-          image: antonPicture,
-          titles: ["Boss Breaker Composer"],
-          games: ["Arcade Frenzy"],
-          socials: [
-            { platform: "Portfolio", link: "https://www.antonellosgnaolin.com/" },
-            { platform: "Instagram", link: "https://www.instagram.com/antynator"}
-          ]
-        },
-        {
           name: "Snowy",
           image: snowyPicture,
-          titles: ["Composer", "Sound Designer"],
+          titles: ["Composer & Sound Designer"],
           games: ["Arcade Frenzy"],
           socials: [
             { platform: "SoundCloud", link: "https://soundcloud.com/synthmints" },
             { platform: "Youtube", link: "https://www.youtube.com/@SynthMints" }
           ]
         },
-        {
-          name: "Luca",
-          image: lucaPicture,
-          titles: ["Boss Breaker Sound Designer"],
-          games: ["Arcade Frenzy"],
-          socials: [
-            { platform: "Youtube", link: "https://www.youtube.com/@lucaborroni8985" }
-          ]
-        }
       ]
     };
   },
