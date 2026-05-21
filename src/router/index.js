@@ -1,22 +1,35 @@
-// src/router/index.js
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../components/Home.vue';
-import About from '../components/About.vue';
-import Games from '../components/Games.vue';
-import Contact from '../components/Contact.vue';
-import MediaKit  from '@/components/MediaKit.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+
+import HomePage from '../pages/HomePage.vue'
+import GamesPage from '../pages/GamesPage.vue'
+import AboutPage from '../pages/AboutPage.vue'
+import ConnectPage from '../pages/ConnectPage.vue'
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
-  { path: '/about', name: 'About', component: About },
-  { path: '/games', name: 'Games', component: Games },
-  { path: '/contact', name: 'Contact', component: Contact },
-  { path: '/press', name: 'Press Kit', component: MediaKit}
-];
+  {
+    path: '/',
+    component: HomePage
+  },
+  {
+    path: '/games',
+    component: GamesPage
+  },
+  {
+    path: '/about',
+    component: AboutPage
+  },
+  {
+    path: '/connect',
+    component: ConnectPage
+  }
+]
 
-const router = createRouter({
+export default createRouter({
   history: createWebHistory(),
   routes,
-});
-
-export default router;
+  scrollBehavior() {
+    return {
+      top: 0
+    }
+  }
+})
