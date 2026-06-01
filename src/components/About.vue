@@ -80,7 +80,7 @@ export default {
         {
           name: "Ben",
           image: benPicture,
-          titles: ["Founde & Lead Developer"],
+          titles: ["Director & Lead Developer"],
           games: ["Boss Breaker", "Owlchemist", "Slime Corp", "Pulse Jumper"],
           socials: [
             { platform: "Portfolio", link: "https://benholland.xyz/" },
@@ -90,7 +90,7 @@ export default {
         {
           name: "Aden",
           image: adenPicture,
-          titles: ["Character & Environment Artist"],
+          titles: ["Character & Environmental Artist"],
           games: ["Retro Quest"],
           socials: [
             { platform: "Itch.io", link: "https://ajtheapple.itch.io/" },
