@@ -146,10 +146,9 @@ export default {
   gap: 2rem;
 }
 
+/* no card fill: on phones a filled card spans the screen and reads as the page turning gray */
 .team-member {
-  background-color: var(--primary-color);
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 1rem 0;
   width: 300px;
   text-align: center;
 }
