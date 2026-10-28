@@ -72,9 +72,16 @@ export default {
   animation-delay: 0.25s;
 }
 
+/* the hero sits under the fixed navbar on every screen size; padding keeps content clear of it */
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh;
+  box-sizing: border-box;
+  padding: 80px 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -93,15 +100,14 @@ export default {
   height: 100%;
   filter: brightness(0.6) blur(20px);
   object-fit: cover;
+  /* blur fades the edges toward transparent; oversizing pushes that fade outside the hero */
+  transform: scale(1.15);
 }
 
 .hero-overlay {
   position: relative;
   z-index: 2;
-  top: 50%;
-  transform: translateY(-50%);
   color: var(--text-color);
-  padding: 0 1rem;
 }
 
 .hero-overlay h2 {
@@ -150,7 +156,8 @@ export default {
   left: 0;
   width: 100%;
   height: 150px;
-  background: linear-gradient(to bottom, transparent, var(--primary-color));
+  /* fades into the footer, which directly follows the hero */
+  background: linear-gradient(to bottom, transparent, var(--footer-background));
   z-index: 1;
 }
 
@@ -166,15 +173,6 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .hero {
-    height: auto;
-    min-height: 100vh;
-  }
-  .hero-overlay {
-    top: auto;
-    transform: translateY(0);
-    padding: 1rem;
-  }
   .hero-overlay h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
@@ -188,9 +186,6 @@ export default {
   }
   .hero-transition {
     height: 100px;
-  }
-  .home {
-    margin-top: 0;
   }
 }
 </style>

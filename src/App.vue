@@ -44,6 +44,7 @@ export default {
   /* logo red lifted to pass contrast as text on the dark background */
   --link-color: #e8434d;
   --background-color: #121212;
+  --footer-background: #0a0a0a;
   --text-color: #ffffff;
   --muted-text: #a8a8a8;
 }

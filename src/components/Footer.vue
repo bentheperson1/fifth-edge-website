@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .footer {
-  background-color: #0a0a0a;
+  background-color: var(--footer-background);
   border-top: 1px solid #262626;
   color: var(--text-color);
   padding: 3.5rem 2rem 2rem;
