@@ -3,29 +3,36 @@
     <div class="nav-container">
       <router-link to="/" class="logo">
         <img
-          rel="preload"
           src="../assets/images/fifth_edge_text.png"
-          alt="Fifth Edge Logo"
+          alt="Fifth Edge Studios"
+          width="200"
+          height="36"
         />
       </router-link>
       <!-- Hamburger menu icon for mobile -->
-      <div class="hamburger" @click="toggleMenu">
+      <button
+        class="hamburger"
+        type="button"
+        aria-label="Menu"
+        :aria-expanded="isOpen"
+        @click="toggleMenu"
+      >
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
       <ul class="nav-links" :class="{ open: isOpen }">
         <li>
-          <router-link to="/games" @click.native="closeMenu">Games</router-link>
+          <router-link to="/games" @click="closeMenu">Games</router-link>
         </li>
         <li>
-          <router-link to="/about" @click.native="closeMenu">About</router-link>
+          <router-link to="/about" @click="closeMenu">About</router-link>
         </li>
-        <!--<li>
-          <router-link to="/press" @click.native="closeMenu">Press</router-link>
-        </li> -->
         <li>
-          <router-link to="/contact" @click.native="closeMenu">Contact</router-link>
+          <router-link to="/press" @click="closeMenu">Press</router-link>
+        </li>
+        <li>
+          <router-link to="/contact" @click="closeMenu">Contact</router-link>
         </li>
       </ul>
     </div>
@@ -68,27 +75,35 @@ export default {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
+  min-height: 68px;
   position: relative;
 }
 
 .logo img {
+  display: block;
   max-width: 200px;
+  height: auto;
 }
 
+/* links fill the full bar height so the whole area is clickable, not just the text */
 .nav-links {
   list-style: none;
   display: flex;
-  margin: 0;
+  align-self: stretch;
+  margin: 0 -1rem 0 0;
   padding: 0;
 }
 
 .nav-links li {
-  margin-left: 2rem;
+  display: flex;
   font-family: 'Poppins Bold';
 }
 
 .nav-links a {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
   color: var(--text-color);
   text-decoration: none;
   font-size: 1rem;
@@ -98,13 +113,16 @@ export default {
 }
 
 .nav-links a:hover {
-  color: var(--secondary-color);
+  color: var(--link-color);
 }
 
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0.25rem;
 }
 
 .hamburger span {
@@ -128,13 +146,19 @@ export default {
     right: 0;
     background: rgba(58, 58, 58, 0.9);
     display: none;
-    padding: 1rem 0;
+    margin: 0;
+    padding: 0.5rem 0;
   }
   .nav-links.open {
     display: flex;
   }
   .nav-links li {
-    margin: 1rem 0;
+    width: 100%;
+  }
+  .nav-links a {
+    flex: 1;
+    justify-content: center;
+    padding: 1rem;
   }
   .logo img {
     max-width: 120px;

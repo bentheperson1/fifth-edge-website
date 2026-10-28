@@ -1,72 +1,54 @@
 <template>
   <div class="games-container">
     <section
-      v-for="game in games"
+      v-for="(game, index) in games"
       :key="game.id"
       class="game-hero"
-      :style="{ backgroundImage: `url(${game.image})` }"
     >
+      <img
+        class="hero-image"
+        :src="game.image.src"
+        :srcset="game.image.srcset"
+        sizes="100vw"
+        alt=""
+        :loading="index === 0 ? 'eager' : 'lazy'"
+        :fetchpriority="index === 0 ? 'high' : 'auto'"
+        decoding="async"
+      />
       <div class="overlay"></div>
       <div class="hero-content">
         <h1 class="game-title">{{ game.title }}</h1>
         <p class="game-description">{{ game.description }}</p>
         <div class="button-group">
           <a
-            v-for="(btn, index) in game.buttons"
-            :key="index"
+            v-for="(btn, i) in game.buttons"
+            :key="i"
             class="action-button"
             :href="btn.link"
             target="_blank"
+            rel="noopener"
           >
             {{ btn.title }}
           </a>
         </div>
       </div>
     </section>
-
-    <!-- <div class="gallery">
-      <h2>Screenshot Gallery</h2>
-      <div class="images">
-        <img
-          v-for="(screenshot, index) in screenshots"
-          :key="index"
-          :src="screenshot"
-          alt="Screenshot"
-          @click="openFullscreen(screenshot)"
-        />
-      </div>
-    </div>
-
-    <div class="fullscreen-modal" v-if="fullscreenImage" @click="closeFullscreen">
-      <img :src="fullscreenImage" alt="Fullscreen Screenshot" />
-      <button class="close-button" @click.stop="closeFullscreen">×</button>
-    </div> -->
   </div>
 </template>
 
 <script>
-import bossBreakerHeader from '@/assets/images/boss_breaker_header.png';
-import owlchemistImage from '@/assets/images/owlchemist.png';
-import slimecorpImage from '@/assets/images/slimecorp.png';
-import runnerimage from '@/assets/images/runner-banner.png';
+import runner960 from '@/assets/optimized/runner-banner-960.webp';
+import runner1920 from '@/assets/optimized/runner-banner-1920.webp';
+import bossBreaker960 from '@/assets/optimized/boss_breaker_header-960.webp';
+import bossBreaker1920 from '@/assets/optimized/boss_breaker_header-1920.webp';
+import owlchemist960 from '@/assets/optimized/owlchemist-960.webp';
+import owlchemist1920 from '@/assets/optimized/owlchemist-1920.webp';
+import slimecorp640 from '@/assets/optimized/slimecorp-640.webp';
 
-// Import screenshot images using ES module syntax
-import bb01 from '@/assets/images/bb-01.png';
-import pj04 from '@/assets/images/pj-04.png';
-import bb02 from '@/assets/images/bb-02.png';
-import owl01 from '@/assets/images/owl-01.png';
-import bb03 from '@/assets/images/bb-03.png';
-import pj01 from '@/assets/images/pj-01.png';
-import sc01 from '@/assets/images/sc-01.png';
-import bb06 from '@/assets/images/bb-06.png';
-import sc02 from '@/assets/images/sc-02.png';
-import owl02 from '@/assets/images/owl-02.png';
-import pj03 from '@/assets/images/pj-03.png';
-import bb04 from '@/assets/images/bb-04.png';
-import owl04 from '@/assets/images/owl-04.png';
-import sc03 from '@/assets/images/sc-03.png';
-import bb05 from '@/assets/images/bb-05.png';
-import pj02 from '@/assets/images/pj-02.png';
+const responsive = (small, smallW, large, largeW) => ({
+  src: large,
+  srcset: `${small} ${smallW}w, ${large} ${largeW}w`,
+});
 
 export default {
   name: "Games",
@@ -77,10 +59,10 @@ export default {
           id: 1,
           title: "Runner Overdrive",
           description: "Keep the world running, one delivery at a time.",
-          image: runnerimage,
+          image: responsive(runner960, 960, runner1920, 1920),
           buttons: [
             {
-              title: "Steam",
+              title: "Wishlist on Steam",
               link: "https://store.steampowered.com/app/4507450/Runner_Overdrive/",
             },
             {
@@ -94,7 +76,7 @@ export default {
           title: "Boss Breaker",
           description:
             "A twin-stick beat 'em up about punching everything in your way in order to overthrow your corporate overlord.",
-          image: bossBreakerHeader,
+          image: responsive(bossBreaker960, 960, bossBreaker1920, 1920),
           buttons: [
             {
               title: "Steam",
@@ -111,7 +93,7 @@ export default {
           title: "Owlchemist",
           description:
             "A short precision-platformer made for the 2024 Pirate Software Game Jam.",
-          image: owlchemistImage,
+          image: responsive(owlchemist960, 960, owlchemist1920, 1920),
           buttons: [
             {
               title: "Itch.io",
@@ -124,7 +106,7 @@ export default {
           title: "Slime Corp",
           description:
             "A simple top-down shooter based around collecting slime.",
-          image: slimecorpImage,
+          image: { src: slimecorp640, srcset: null },
           buttons: [
             {
               title: "Steam",
@@ -141,80 +123,12 @@ export default {
           ],
         },
       ],
-      fullscreenImage: null,
-      screenshots: [
-        bb01,
-        pj04,
-        bb02,
-        owl01,
-        bb03,
-        pj01,
-        sc01,
-        bb06,
-        sc02,
-        owl02,
-        pj03,
-        bb04,
-        owl04,
-        sc03,
-        bb05,
-        pj02,
-      ],
     };
-  },
-  methods: {
-    openFullscreen(image) {
-      this.fullscreenImage = image;
-    },
-    closeFullscreen() {
-      this.fullscreenImage = null;
-    },
   },
 };
 </script>
 
 <style scoped>
-.gallery {
-  padding: 2rem 1rem;
-  text-align: center;
-  background-color: var(--background-color);
-}
-
-.gallery h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.images {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: center;
-}
-
-.images img {
-  width: calc(25% - 1rem);
-  border-radius: 12px;
-  transition: transform 0.3s;
-  cursor: pointer;
-}
-
-.images img:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 1024px) {
-  .images img {
-    width: calc(50% - 1rem);
-  }
-}
-
-@media (max-width: 800px) {
-  .images img {
-    width: calc(100% - 1rem);
-  }
-}
-
 .games-container {
   overflow-x: hidden;
 }
@@ -222,11 +136,17 @@ export default {
 .game-hero {
   position: relative;
   height: 100vh;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .overlay {
@@ -243,6 +163,7 @@ export default {
   text-align: center;
   color: #fff;
   max-width: 600px;
+  padding: 0 1.5rem;
   opacity: 0;
   animation: fadeIn 2s forwards;
   animation-delay: 0.1s;
@@ -276,7 +197,7 @@ export default {
 }
 
 .action-button:hover {
-  background: #e03e00;
+  background: var(--secondary-hover);
 }
 
 @keyframes fadeIn {
@@ -290,33 +211,4 @@ export default {
   }
 }
 
-.fullscreen-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-}
-
-.fullscreen-modal img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 8px;
-}
-
-.close-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-}
 </style>

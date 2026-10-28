@@ -1,99 +1,69 @@
 <template>
   <section class="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <br>
-
-      <h1>
-        Press & General Contact: <a href="mailto:staff@fifthedgestudios.com">staff@fifthedgestudios.com</a>
-      </h1>
-      <h1>
-        Direct Contact to Lead Dev: <a href="mailto:ben@fifthedgestudios.com">ben@fifthedgestudios.com</a>
-      </h1>
-    </div>
+    <h1>Contact</h1>
+    <dl class="contact-list">
+      <div class="row">
+        <dt>Press &amp; general inquiries</dt>
+        <dd><a href="mailto:staff@fifthedgestudios.com">staff@fifthedgestudios.com</a></dd>
+      </div>
+      <div class="row">
+        <dt>Lead developer</dt>
+        <dd><a href="mailto:ben@fifthedgestudios.com">ben@fifthedgestudios.com</a></dd>
+      </div>
+      <div class="row">
+        <dt>Community &amp; support</dt>
+        <dd><a href="https://discord.gg/RnfJTVMjrP" target="_blank" rel="noopener">Join our Discord</a></dd>
+      </div>
+    </dl>
+    <p class="note">
+      Writing about one of our games? The <router-link to="/press">press kit</router-link> has fact sheets,
+      screenshots, and logos.
+    </p>
   </section>
 </template>
 
 <script>
 export default {
   name: "Contact",
-  data() {
-    return {
-      submitted: false,
-      form: {
-        name: "",
-        email: "",
-        message: ""
-      }
-    };
-  },
-  methods: {
-    submitForm() {
-      console.log("Form submitted:", this.form);
-      this.submitted = true;
-    }
-  }
 };
 </script>
 
 <style scoped>
 .contact {
-  padding: 4rem 1rem;
-  text-align: center;
-  background-color: #121212;
-  color: #e0e0e0;
-}
-.container {
-  max-width: 600px;
+  max-width: 760px;
   margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
 }
-h2 {
+h1 {
+  font-family: 'Poppins Bold', 'Poppins', sans-serif;
   font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #ffffff;
+  margin: 0 0 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 4px solid var(--secondary-color);
 }
-h3 {
-  color: #cccccc;
+.contact-list {
+  margin: 0;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #262626;
+}
+dt {
+  color: var(--muted-text);
+}
+dd {
+  margin: 0;
+  font-size: 1.15rem;
 }
 a {
-  color: var(--secondary-color);
+  color: var(--link-color);
 }
-.contact-form {
-  margin-top: 2rem;
-  text-align: left;
-}
-.form-group {
-  margin-bottom: 1rem;
-}
-.form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #333;
-  border-radius: 4px;
-  font-size: 1rem;
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-}
-button[type="submit"] {
-  background-color: red;
-  color: #121212;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  display: block;
-  margin: 1rem auto 0;
-  transition: background-color 0.3s ease;
-}
-button[type="submit"]:hover {
-  background-color: #ff6666;
+.note {
+  color: var(--muted-text);
+  margin-top: 2.5rem;
 }
 </style>

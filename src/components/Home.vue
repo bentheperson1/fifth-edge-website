@@ -3,19 +3,40 @@
     <section class="home">
       <div class="hero">
         <div class="hero-background">
-          <video class="video" ref="video" autoplay muted loop playsinline>
-            <source src="@/assets/videos/BossBreakerTrailer.mp4" type="video/mp4" />
+          <video
+            class="video"
+            ref="video"
+            :poster="poster"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            aria-hidden="true"
+          >
+            <source src="@/assets/optimized/hero-loop.mp4" type="video/mp4" />
           </video>
           <div class="hero-transition"></div>
         </div>
         <div class="hero-overlay">
+          <h1 class="visually-hidden">Fifth Edge Studios</h1>
           <img
-            rel="preload"
-            :src=logo
-            alt="Fifth Edge Logo"
+            :src="logo"
+            alt="Fifth Edge Studios"
             class="hero-logo"
+            width="640"
+            height="450"
+            fetchpriority="high"
           />
-          <h2>We make games sometimes.</h2>
+          <h2>We make fast, punchy pixel-art games.</h2>
+          <a
+            class="btn"
+            href="https://store.steampowered.com/app/4507450/Runner_Overdrive/"
+            target="_blank"
+            rel="noopener"
+          >
+            Wishlist Runner Overdrive on Steam
+          </a>
         </div>
       </div>
     </section>
@@ -24,12 +45,19 @@
 
 <script>
 import logoimg from "@/assets/images/fifth_edge_logo.png"
+import posterimg from "@/assets/optimized/hero-loop-poster.webp"
 
 export default {
   name: "Home",
   data() {
     return {
-      logo: logoimg
+      logo: logoimg,
+      poster: posterimg
+    }
+  },
+  mounted() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.$refs.video.pause();
     }
   }
 };
@@ -83,21 +111,37 @@ export default {
 
 .hero-logo {
   max-width: 700px;
+  width: 100%;
+  height: auto;
   margin-bottom: -2rem;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .btn {
+  display: inline-block;
+  margin-top: 1rem;
   background-color: var(--secondary-color);
-  color: var(--background-color);
+  color: var(--text-color);
   padding: 1rem 2rem;
   text-decoration: none;
-  border-radius: 5px;
+  font-family: 'Poppins Bold', 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
   transition: background-color 0.3s;
   font-size: 1rem;
 }
 
 .btn:hover {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-hover);
 }
 
 .hero-transition {

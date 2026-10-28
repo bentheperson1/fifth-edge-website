@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fifth Edge Studios</title>
+    <meta name="description" content="Fifth Edge Studios is an independent game studio making fast, punchy 2D pixel-art games, including Boss Breaker, Slime Corp, and Runner Overdrive.">
+    <link rel="canonical" href="https://fifthedgestudios.com/">
 
-    <meta property="og:title" content="Fifth Edge Studios" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://fifthedgestudios.com" />
-    <meta property="og:image" content="https://fifthedgestudios.com/assets/boss_breaker_logo-dekkb5zr.png" />
-    <meta property="og:description" content="We Make Games Sometimes." />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#b4202a">
-    <meta property="og:locale" content="en_US" />
+
+    <meta property="og:site_name" content="Fifth Edge Studios">
+    <meta property="og:title" content="Fifth Edge Studios">
+    <meta property="og:description" content="We make fast, punchy pixel-art games. Independent studio behind Boss Breaker, Slime Corp, and Runner Overdrive.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fifthedgestudios.com/">
+    <meta property="og:image" content="https://fifthedgestudios.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Fifth Edge Studios logo">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fifth Edge Studios">
+    <meta name="twitter:description" content="We make fast, punchy pixel-art games. Independent studio behind Boss Breaker, Slime Corp, and Runner Overdrive.">
+    <meta name="twitter:image" content="https://fifthedgestudios.com/og-image.png">
+
+    <link rel="preload" href="/fonts/Poppins-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Poppins-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Fifth Edge Studios",
+        "url": "https://fifthedgestudios.com/",
+        "logo": "https://fifthedgestudios.com/icon-512.png",
+        "email": "staff@fifthedgestudios.com",
+        "foundingDate": "2019",
+        "sameAs": [
+          "https://store.steampowered.com/search/?developer=Fifth%20Edge%20Studios",
+          "https://fifthedgestudios.itch.io",
+          "https://bsky.app/profile/fifth-edge.bsky.social",
+          "https://discord.gg/RnfJTVMjrP"
+        ]
+      }
+    </script>
   </head>
-  <form name="contact-form" netlify netlify-honeypot="bot-field" hidden>
-    <input type="text" name="name" />
-    <input type="text" name="email" />
-    <textarea name="message"></textarea>
-  </form>
-  
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>

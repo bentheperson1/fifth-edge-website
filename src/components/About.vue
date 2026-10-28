@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <!-- About Section with Slideshow -->
+    <!-- About Section -->
     <section class="about-section">
       <div class="about-content">
         <h1>About</h1>
@@ -17,16 +17,6 @@
           - Ben
         </p>
       </div>
-      <!-- <div class="slideshow">
-        <div
-          v-for="(slide, index) in slides"
-          :key="index"
-          class="slide"
-          :class="{ active: index === activeSlide }"
-        >
-          <img :src="slide.image" :alt="slide.alt" />
-        </div>
-      </div> -->
     </section>
 
     <!-- Team Members in a horizontal row -->
@@ -38,8 +28,8 @@
           v-for="(member, index) in teamMembers"
           :key="index"
         >
-          <img :src="member.image" :alt="member.name" class="member-image" />
-          <h1 class="titles">{{ member.name }}</h1>
+          <img :src="member.image" :alt="member.name" class="member-image" width="200" height="200" loading="lazy" />
+          <h3 class="titles">{{ member.name }}</h3>
           <p class="titles">
             <span v-for="(title, i) in member.titles" :key="i">
               {{ title }}<span v-if="i < member.titles.length - 1"> / </span>
@@ -51,6 +41,7 @@
               :key="i"
               :href="social.link"
               target="_blank"
+              rel="noopener"
             >
               {{ social.platform }}
             </a>
@@ -64,18 +55,12 @@
 <script>
 import benPicture from "@/assets/images/ben.png";
 import adenPicture from "@/assets/images/aden.png";
-import snowyPicture from "@/assets/images/snowy.jpg";
-
-import about1 from "@/assets/images/about1.jpg"
+import snowyPicture from "@/assets/optimized/snowy-384.webp";
 
 export default {
   name: "About",
   data() {
     return {
-      slides: [
-        { image: about1, alt: "Screenshot 1" },
-      ],
-      activeSlide: 0,
       teamMembers: [
         {
           name: "Ben",
@@ -109,12 +94,6 @@ export default {
         },
       ]
     };
-  },
-  mounted() {
-    // Simple automatic slideshow (cycles every 3 seconds)
-    setInterval(() => {
-      this.activeSlide = (this.activeSlide + 1) % this.slides.length;
-    }, 3000);
   }
 };
 </script>
@@ -149,30 +128,6 @@ export default {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   line-height: 1.6;
-}
-
-.slideshow {
-  flex: 1;
-  min-width: 300px;
-  max-width: 600px;
-  position: relative;
-  overflow: hidden;
-}
-.slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-.slide.active {
-  opacity: 1;
-  position: relative;
-}
-.slide img {
-  width: 100%;
-  border-radius: 8px;
 }
 
 .team-section {
@@ -211,6 +166,9 @@ export default {
   font-weight: bold;
   margin: 0.5rem 0;
 }
+h3.titles {
+  font-size: 1.5rem;
+}
 
 .game {
   color: var(--secondary-color);
@@ -220,11 +178,11 @@ export default {
 .socials a {
   margin: 0 0.5rem;
   text-decoration: none;
-  color: #0077cc;
+  color: var(--link-color);
   transition: color 0.3s;
 }
 .socials a:hover {
-  color: #005fa3;
+  color: var(--text-color);
 }
 
 /* Responsive adjustments */

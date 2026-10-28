@@ -1,477 +1,376 @@
 <template>
-  <div class="brand-guidelines-page">
-    <section class="brand-guidelines">
-      <h1>Brand Guidelines</h1>
-      <br>
-      <div class="logo-section">
-        <h2>Logos</h2>
-        <img :src="companyLogo" alt="Company Logo" class="brand-logo" />
-      </div>
+  <div class="press-page">
+    <header class="press-header">
+      <h1>Press Kit</h1>
+      <p class="lede">
+        Everything you need to write about Fifth Edge Studios and our games. Assets here may be used for
+        editorial coverage. For keys, interviews, or anything missing, email
+        <a href="mailto:staff@fifthedgestudios.com">staff@fifthedgestudios.com</a>.
+      </p>
+    </header>
 
-      <div class="colors-section">
-        <h2>Color Palette</h2>
-        <div class="colors">
-          <div class="color-item">
-            <div class="color-square" :style="{ backgroundColor: theme.primaryColor }"></div>
-            <span>{{ theme.primaryColor }}</span>
+    <section class="block">
+      <h2>Studio</h2>
+      <div class="split">
+        <dl class="facts">
+          <div><dt>Developer</dt><dd>Fifth Edge Studios</dd></div>
+          <div><dt>Founded</dt><dd>2019</dd></div>
+          <div><dt>Team size</dt><dd>3</dd></div>
+          <div><dt>Website</dt><dd><a href="https://fifthedgestudios.com">fifthedgestudios.com</a></dd></div>
+          <div><dt>Press contact</dt><dd><a href="mailto:staff@fifthedgestudios.com">staff@fifthedgestudios.com</a></dd></div>
+          <div>
+            <dt>Social</dt>
+            <dd>
+              <a href="https://bsky.app/profile/fifth-edge.bsky.social" target="_blank" rel="noopener">Bluesky</a>,
+              <a href="https://discord.gg/RnfJTVMjrP" target="_blank" rel="noopener">Discord</a>,
+              <a href="https://fifthedgestudios.itch.io" target="_blank" rel="noopener">itch.io</a>
+            </dd>
           </div>
-          <div class="color-item">
-            <div class="color-square" :style="{ backgroundColor: theme.secondaryColor }"></div>
-            <span>{{ theme.secondaryColor }}</span>
-          </div>
-          <div class="color-item">
-            <div class="color-square" :style="{ backgroundColor: theme.backgroundColor }"></div>
-            <span>{{ theme.backgroundColor }}</span>
-          </div>
-          <div class="color-item">
-            <div class="color-square" :style="{ backgroundColor: theme.textColor }"></div>
-            <span>{{ theme.textColor }}</span>
-          </div>
+        </dl>
+        <div class="description">
+          <p>
+            Fifth Edge Studios is a small independent team making fast, 2D pixel-art games. Since 2019 the
+            studio has released titles on Steam, itch.io, and GX.Games, including the twin-stick beat 'em up
+            Boss Breaker and the free top-down shooter Slime Corp. Its next game, Runner Overdrive, is in
+            development.
+          </p>
         </div>
-      </div>
-
-      <div class="download-section">
-        <a href="/downloads/brand-assets.zip" class="download-button" download>
-          Download All Brand Assets
-        </a>
       </div>
     </section>
 
-    <section class="press-kits">
-      <h2>Game Press Kits</h2>
-      <div v-for="game in games" :key="game.id" class="press-kit">
-        <div class="press-kit-header">
-          <img :src="game.logo" :alt="game.title" class="game-logo large-logo" />
-        </div>
-        <div class="press-kit-content">
-          <p class="overview">
-            <strong>Overview:</strong> {{ game.overview }}
-          </p>
-          <p class="in-depth">
-            <strong>Description:</strong> {{ game.inDepthDescription }}
-          </p>
-          <p class="release-date">
-            <strong>Release Date:</strong> {{ game.releaseDate }}
-          </p>
+    <section class="block">
+      <h2>Logos</h2>
+      <div class="logo-grid">
+        <figure v-for="logo in logos" :key="logo.file" class="logo-tile">
+          <div class="logo-art">
+            <img :src="logo.file" :alt="logo.name" loading="lazy" />
+          </div>
+          <figcaption>
+            {{ logo.name }}
+            <a :href="logo.file" download>PNG</a>
+          </figcaption>
+        </figure>
+      </div>
 
-          <!-- Additional Press Kit Content -->
-          <div class="press-release">
-            <h4>Press Release</h4>
-            <p>{{ game.pressRelease }}</p>
-          </div>
+      <h3>Colors</h3>
+      <ul class="swatches">
+        <li v-for="color in colors" :key="color.hex">
+          <span class="swatch" :style="{ backgroundColor: color.hex }"></span>
+          <span>{{ color.name }}</span>
+          <code>{{ color.hex }}</code>
+        </li>
+      </ul>
+    </section>
 
-          <div class="visual-assets">
-            <h4>Visual Assets</h4>
-            <div class="assets">
-              <div class="screenshots">
-                <div
-                  v-for="(screenshot, index) in game.visualAssets.screenshots"
-                  :key="index"
-                  class="screenshot"
-                >
-                  <img :src="screenshot" alt="Screenshot" />
-                </div>
-              </div>
-              <div class="key-art" v-if="game.visualAssets.keyArt">
-                <img :src="game.visualAssets.keyArt" alt="Key Art" />
-              </div>
-              <div class="video" v-if="game.visualAssets.video">
-                <a :href="game.visualAssets.video" target="_blank">Watch Trailer</a>
-              </div>
-            </div>
+    <section v-for="game in games" :key="game.slug" :id="game.slug" class="block game">
+      <h2 class="game-heading">
+        <img v-if="game.logo" :src="game.logo" :alt="game.title" class="game-logo" loading="lazy" />
+        <span v-else>{{ game.title }}</span>
+      </h2>
+      <div class="split">
+        <dl class="facts">
+          <div><dt>Release date</dt><dd>{{ game.release }}</dd></div>
+          <div><dt>Platforms</dt><dd>{{ game.platforms }}</dd></div>
+          <div><dt>Genre</dt><dd>{{ game.genre }}</dd></div>
+          <div v-if="game.price"><dt>Price</dt><dd>{{ game.price }}</dd></div>
+          <div>
+            <dt>Store pages</dt>
+            <dd>
+              <template v-for="(store, i) in game.stores" :key="store.name">
+                <a :href="store.link" target="_blank" rel="noopener">{{ store.name }}</a><span v-if="i < game.stores.length - 1">, </span>
+              </template>
+            </dd>
           </div>
-
-          <div class="fact-sheet">
-            <h4>Fact Sheet</h4>
-            <p>{{ game.factSheet }}</p>
-          </div>
-
-          <div class="technical-details">
-            <h4>Technical Details</h4>
-            <p>{{ game.technicalDetails }}</p>
-          </div>
-
-          <div class="company-info">
-            <h4>Company &amp; Team Information</h4>
-            <p>{{ game.companyInfo }}</p>
-            <p>{{ game.teamInfo }}</p>
-          </div>
-
-          <div class="additional-materials">
-            <h4>Additional Materials</h4>
-            <p>{{ game.additionalMaterials }}</p>
-          </div>
-
-          <div class="buy-links">
-            <h4>Where to Buy:</h4>
-            <div class="buy-buttons">
-              <button
-                v-for="(btn, index) in game.buttons"
-                :key="index"
-                class="buy-button"
-                @click="openLink(btn.link)"
-              >
-                {{ btn.title }}
-              </button>
-            </div>
-          </div>
-          <div class="download-presskit">
-            <a :href="game.downloadZip" class="download-button" download>
-              Download Press Kit
-            </a>
-          </div>
+        </dl>
+        <div class="description">
+          <p v-for="(paragraph, i) in game.description" :key="i">{{ paragraph }}</p>
         </div>
       </div>
+
+      <h3>{{ game.media.length > 1 ? 'Screenshots' : 'Key art' }}</h3>
+      <div class="shots">
+        <a
+          v-for="(shot, i) in game.media"
+          :key="i"
+          :href="shot.full"
+          :download="`${game.slug}-${i + 1}.png`"
+          class="shot"
+        >
+          <img :src="shot.thumb" :alt="`${game.title} screenshot ${i + 1}`" loading="lazy" decoding="async" width="640" height="360" />
+        </a>
+      </div>
+      <p class="hint">Click an image to download it at full resolution.</p>
     </section>
   </div>
 </template>
 
 <script>
-import companyLogo from '@/assets/images/fifth_edge_logo.png';
-import bossBreakerLogo from '@/assets/images/boss_breaker_logo.png';
-import owlchemistLogo from '@/assets/images/owlchemist_logo.png';
-import slimecorpLogo from '@/assets/images/slimecorp_logo.png';
-import pulsejumperLogo from '@/assets/images/pulsejumper_logo.png';
+// Small web thumbnails are shown; the originals are linked for download
+const thumbs = import.meta.glob('../assets/optimized/*-640.webp', { eager: true, import: 'default' });
+const originals = import.meta.glob(
+  ['../assets/images/{bb,owl,sc}-*.png', '../assets/images/runner.png'],
+  { eager: true, query: '?url', import: 'default' }
+);
+
+const media = (...names) =>
+  names.map((name) => ({
+    thumb: thumbs[`../assets/optimized/${name}-640.webp`],
+    full: originals[`../assets/images/${name}.png`],
+  }));
 
 export default {
   name: "MediaKit",
   data() {
     return {
-      companyLogo,
-      theme: {
-        primaryColor: '#242424',
-        secondaryColor: '#E74C3C',
-        backgroundColor: '#121212',
-        textColor: '#ffffff'
-      },
+      logos: [
+        { name: "Logo", file: "/press/fifth-edge-logo.png" },
+        { name: "Wordmark", file: "/press/fifth-edge-wordmark.png" },
+        { name: "Mark", file: "/press/fifth-edge-mark.png" },
+      ],
+      colors: [
+        { name: "Edge Red", hex: "#B4202A" },
+        { name: "Black", hex: "#121212" },
+        { name: "White", hex: "#FFFFFF" },
+      ],
       games: [
         {
-          id: 1,
+          slug: "runner-overdrive",
+          title: "Runner Overdrive",
+          logo: null,
+          release: "Coming soon",
+          platforms: "Windows",
+          genre: "2D platformer, movement shooter",
+          stores: [
+            { name: "Steam", link: "https://store.steampowered.com/app/4507450/Runner_Overdrive/" },
+            { name: "itch.io", link: "https://fifthedgestudios.itch.io/runner-overdrive" },
+          ],
+          description: [
+            "Keep the world running, one delivery at a time.",
+            "Runner Overdrive is a fast-paced 2D platformer and movement shooter set in a post-apocalyptic world, where you meet unusual characters and enemies while investigating the cause of the collapse.",
+          ],
+          media: media("runner"),
+        },
+        {
+          slug: "boss-breaker",
           title: "Boss Breaker",
-          logo: bossBreakerLogo,
-          overview: "A twin-stick beat 'em up game.",
-          inDepthDescription:
-            "Boss Breaker is a fast-paced twin-stick beat 'em up where players punch their way through hordes of enemies to overthrow a corporate regime. Experience dynamic combat and strategic challenges in every level.",
-          releaseDate: "2024-06-01",
-          pressRelease:
-            "Announcing Boss Breaker, a new twin-stick beat 'em up that redefines fast-paced combat and strategic gameplay.",
-          visualAssets: {
-            screenshots: [
-              "/downloads/boss_breaker_ss1.png",
-              "/downloads/boss_breaker_ss2.png"
-            ],
-            keyArt: "/downloads/boss_breaker_keyart.png",
-            video: "https://www.youtube.com/watch?v=boss_breaker_trailer"
-          },
-          factSheet:
-            "Genre: Beat 'em up, Platforms: Steam, GX.Games, Release Date: 2024-06-01",
-          technicalDetails: "Minimum: Windows 10, 4GB RAM, 2GHz CPU",
-          companyInfo: "Developed by Fifth Edge Studios, a leader in innovative gaming.",
-          teamInfo: "Team includes award-winning developers with experience in high-octane titles.",
-          additionalMaterials:
-            "Awarded Best Indie Game 2023, featured on top gaming blogs.",
-          buttons: [
-            {
-              title: "Steam",
-              link: "https://store.steampowered.com/app/2869030/Boss_Breaker/"
-            },
-            {
-              title: "GX.Games",
-              link: "https://gx.games/games/5t65sb/boss-breaker/tracks/d7b6bbc6-99b8-497b-a300-28548874c67e/"
-            }
+          logo: "/press/boss-breaker-logo.png",
+          release: "October 31, 2024",
+          platforms: "Windows, browser (GX.Games)",
+          genre: "Twin-stick beat 'em up",
+          stores: [
+            { name: "Steam", link: "https://store.steampowered.com/app/2869030/Boss_Breaker/" },
+            { name: "GX.Games", link: "https://gx.games/games/5t65sb/boss-breaker/tracks/d7b6bbc6-99b8-497b-a300-28548874c67e/" },
           ],
-          downloadZip: "/downloads/boss_breaker_presskit.zip"
+          description: [
+            "A twin-stick beat 'em up in which a low-ranking employee tries to uncover the truth and win their freedom from an underground corporate facility.",
+            "Punch everything in your way and overthrow your corporate overlord.",
+          ],
+          media: media("bb-01", "bb-02", "bb-03", "bb-04", "bb-05", "bb-06"),
         },
         {
-          id: 2,
+          slug: "owlchemist",
           title: "Owlchemist",
-          logo: owlchemistLogo,
-          overview: "A precision-platformer game.",
-          inDepthDescription:
-            "Owlchemist is a short, precision-platformer crafted for the 2024 Pirate Software Game Jam. With intricate level design and challenging gameplay, it tests the limits of your reflexes.",
-          releaseDate: "2024-04-15",
-          pressRelease:
-            "Introducing Owlchemist, a precision-platformer crafted to challenge your reflexes and creativity.",
-          visualAssets: {
-            screenshots: [
-              "/downloads/owlchemist_ss1.png",
-              "/downloads/owlchemist_ss2.png"
-            ],
-            keyArt: "/downloads/owlchemist_keyart.png",
-            video: "https://www.youtube.com/watch?v=owlchemist_trailer"
-          },
-          factSheet:
-            "Genre: Platformer, Platforms: Itch.io, Release Date: 2024-04-15",
-          technicalDetails: "Minimum: Windows 10, 2GB RAM, 1.5GHz CPU",
-          companyInfo: "Developed by Fifth Edge Studios.",
-          teamInfo: "A small but dedicated team of creative developers.",
-          additionalMaterials:
-            "Winner of the 2024 Pirate Software Game Jam, rave reviews from indie gamers.",
-          buttons: [
-            {
-              title: "Itch.io",
-              link: "https://fifthedgestudios.itch.io/owlchemist"
-            }
+          logo: "/press/owlchemist-logo.png",
+          release: "July 2024",
+          platforms: "Windows, browser (itch.io)",
+          genre: "Precision platformer",
+          stores: [
+            { name: "itch.io", link: "https://fifthedgestudios.itch.io/owlchemist" },
           ],
-          downloadZip: "/downloads/owlchemist_presskit.zip"
+          description: [
+            "A short 2D precision platformer about an alchemist who was kicked out of his tower. Your goal is to take it back.",
+            "Made for the 2024 Pirate Software Game Jam.",
+          ],
+          media: media("owl-01", "owl-02", "owl-03", "owl-04"),
         },
         {
-          id: 3,
+          slug: "slime-corp",
           title: "Slime Corp",
-          logo: slimecorpLogo,
-          overview: "A top-down shooter collecting slime.",
-          inDepthDescription:
-            "Slime Corp is a simple yet addictive top-down shooter that challenges players to collect slime while fending off increasingly difficult waves of enemies. Strategic gameplay meets fast action in this unique shooter.",
-          releaseDate: "2024-08-20",
-          pressRelease:
-            "Slime Corp is here to redefine top-down shooters with its unique slime-collecting mechanics and action-packed gameplay.",
-          visualAssets: {
-            screenshots: [
-              "/downloads/slimecorp_ss1.png",
-              "/downloads/slimecorp_ss2.png"
-            ],
-            keyArt: "/downloads/slimecorp_keyart.png",
-            video: "https://www.youtube.com/watch?v=slimecorp_trailer"
-          },
-          factSheet:
-            "Genre: Shooter, Platforms: Steam, Itch.io, GX.Games, Release Date: 2024-08-20",
-          technicalDetails: "Minimum: Windows 10, 4GB RAM, 2.5GHz CPU",
-          companyInfo: "Developed by Fifth Edge Studios.",
-          teamInfo: "Expert team focused on fast-paced and engaging gameplay.",
-          additionalMaterials:
-            "Featured in top gaming magazines, multiple awards for gameplay innovation.",
-          buttons: [
-            {
-              title: "Steam",
-              link: "https://store.steampowered.com/app/1949750/Slime_Corp/"
-            },
-            {
-              title: "Itch.io",
-              link: "https://fifthedgestudios.itch.io/slime-corp"
-            },
-            {
-              title: "GX.Games",
-              link: "https://gx.games/games/iygssc/slime-corp/"
-            }
+          logo: "/press/slime-corp-logo.png",
+          release: "May 24, 2022",
+          platforms: "Windows, browser (itch.io, GX.Games)",
+          genre: "Top-down shooter",
+          price: "Free",
+          stores: [
+            { name: "Steam", link: "https://store.steampowered.com/app/1949750/Slime_Corp/" },
+            { name: "itch.io", link: "https://fifthedgestudios.itch.io/slime-corp" },
+            { name: "GX.Games", link: "https://gx.games/games/iygssc/slime-corp/" },
           ],
-          downloadZip: "/downloads/slimecorp_presskit.zip"
-        },
-        {
-          id: 4,
-          title: "Pulse Jumper",
-          logo: pulsejumperLogo,
-          overview: "An action-packed platformer.",
-          inDepthDescription:
-            "Pulse Jumper is a unique platformer where players navigate challenging levels with a twist—using a shotgun to jump. Experience high-octane action and innovative gameplay mechanics in this daring title.",
-          releaseDate: "2024-09-30",
-          pressRelease:
-            "Pulse Jumper offers a fresh take on platformers with its innovative shotgun jump mechanic.",
-          visualAssets: {
-            screenshots: [
-              "/downloads/pulsejumper_ss1.png",
-              "/downloads/pulsejumper_ss2.png"
-            ],
-            keyArt: "/downloads/pulsejumper_keyart.png",
-            video: "https://www.youtube.com/watch?v=pulsejumper_trailer"
-          },
-          factSheet:
-            "Genre: Platformer, Platforms: Steam, Release Date: 2024-09-30",
-          technicalDetails: "Minimum: Windows 10, 3GB RAM, 2GHz CPU",
-          companyInfo: "Developed by Fifth Edge Studios.",
-          teamInfo: "A passionate team dedicated to creating innovative gaming experiences.",
-          additionalMaterials:
-            "Recognized for creative gameplay mechanics, featured in indie game showcases.",
-          buttons: [
-            {
-              title: "Steam",
-              link: "https://store.steampowered.com/app/1397760/Pulse_Jumper/"
-            }
+          description: [
+            "A minimalist top-down shooter about collecting slime.",
           ],
-          downloadZip: "/downloads/pulsejumper_presskit.zip"
+          media: media("sc-01", "sc-02", "sc-03"),
         },
-      ]
+      ],
     };
   },
-  methods: {
-    openLink(link) {
-      window.open(link, '_blank');
-    }
-  }
 };
 </script>
 
 <style scoped>
-.brand-guidelines-page {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  padding: 2rem;
-  font-family: 'Poppins', sans-serif;
-  max-width: 1200px;
+.press-page {
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
 }
 
-.brand-guidelines {
-  margin: 2rem auto;
-  padding: 2rem;
-  border: 1px solid var(--secondary-color);
-  border-radius: 8px;
-  max-width: 800px;
-  background-color: var(--background-color);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.brand-guidelines h1,
-.brand-guidelines h2 {
-  color: ghostwhite;
-  text-align: center;
-}
-
-.logo-section {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.brand-logo {
-  max-width: 200px;
-  margin: 0 auto;
-}
-
-.colors-section {
-  margin-bottom: 2rem;
-}
-
-.colors {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.color-item {
-  display: flex;
-  align-items: center;
-  margin: 0.5rem;
-}
-
-.color-square {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #ccc;
-  margin-right: 0.5rem;
-  border-radius: 4px;
-}
-
-.download-section {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.download-button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--secondary-color);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.download-button:hover {
-  background-color: #e03e00;
-  transform: scale(1.05);
-}
-
-.press-kits {
-  padding: 2rem;
-  border: 1px solid var(--secondary-color);
-  border-radius: 8px;
-  max-width: 800px;
-  margin: 2rem auto;
-  background-color: var(--background-color);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.press-kit {
-  margin-bottom: 2rem;
+.press-header {
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--secondary-color);
+  border-bottom: 4px solid var(--secondary-color);
+}
+.press-header h1 {
+  font-family: 'Poppins Bold', 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+}
+.lede {
+  max-width: 720px;
+  color: #dcdcdc;
+  line-height: 1.7;
+  margin: 0;
 }
 
-.press-kit:last-child {
+a {
+  color: var(--link-color);
+}
+
+.block {
+  scroll-margin-top: 80px;
+  padding: 3rem 0;
+  border-bottom: 1px solid #262626;
+}
+.block:last-child {
   border-bottom: none;
 }
-
-.press-kit-header {
-  text-align: center;
-  margin-bottom: 1rem;
+.block h2 {
+  font-family: 'Poppins Bold', 'Poppins', sans-serif;
+  font-size: 1.75rem;
+  margin: 0 0 1.5rem;
+}
+.block h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted-text);
+  margin: 2.5rem 0 1rem;
 }
 
-.game-logo.large-logo {
-  max-width: 500px;
-  width: 100%;
-  display: block;
-  margin: 0 auto 50px;
+.split {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 2fr;
+  gap: 2.5rem;
 }
 
-.press-kit-content {
-  margin-top: 1rem;
+.facts {
+  margin: 0;
+}
+.facts > div {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #262626;
+}
+.facts > div:first-child {
+  padding-top: 0;
+}
+.facts dt {
+  font-size: 0.8rem;
+  color: var(--muted-text);
+}
+.facts dd {
+  margin: 0.15rem 0 0;
 }
 
-.press-kit-content p {
-  margin: 0.5rem 0;
+.description p {
+  margin: 0 0 1rem;
+  line-height: 1.7;
+  color: #dcdcdc;
 }
 
-.press-kit-content h4 {
-  margin-top: 1rem;
-  color: #E74C3C;
-}
-
-.assets {
-  display: flex;
-  flex-wrap: wrap;
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
-  margin-top: 0.5rem;
 }
-
-.screenshot img,
-.key-art img {
-  max-width: 100%;
-  border-radius: 4px;
+.logo-tile {
+  margin: 0;
 }
-
-.video a {
-  color: var(--secondary-color);
-  text-decoration: underline;
-}
-
-.buy-links {
-  margin-top: 1rem;
-}
-
-.buy-buttons {
+.logo-art {
+  background: #1e1e1e;
+  aspect-ratio: 16 / 10;
   display: flex;
-  justify-content: left;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+.logo-art img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.logo-tile figcaption {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  font-size: 0.9rem;
+}
+
+.swatches {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 1.5rem 2.5rem;
+}
+.swatches li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.swatch {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #3a3a3a;
+}
+.swatches code {
+  color: var(--muted-text);
 }
 
-.buy-button {
-  padding: 0.5rem 1rem;
-  background-color: var(--secondary-color);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+.game-heading {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+.game-logo {
+  max-height: 110px;
+  max-width: 100%;
 }
 
-.buy-button:hover {
-  background-color: #e03e00;
-  transform: scale(1.05);
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+.shot:hover img {
+  opacity: 0.8;
+}
+.hint {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+  margin: 0.75rem 0 0;
 }
 
-.download-presskit {
-  text-align: center;
-  margin-top: 2rem;
+@media (max-width: 768px) {
+  .split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 </style>
