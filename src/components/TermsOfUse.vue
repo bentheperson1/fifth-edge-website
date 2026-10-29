@@ -4,8 +4,7 @@
     <p class="updated">Last updated October 28, 2026</p>
 
     <p>
-      These terms apply to your use of fifthedgestudios.com, which is operated by Ben Holland under the
-      name Fifth Edge Studios ("we", "us"). By using the site, you agree to them. If you
+      These terms apply to your use of fifthedgestudios.com, By using the site, you agree to them. If you
       don't agree, please don't use the site.
     </p>
 
@@ -21,7 +20,7 @@
     <p>
       Logos, screenshots, and other assets on our <router-link to="/press">Press Kit</router-link> page may be
       used by press, reviewers, and content creators for editorial coverage of Fifth Edge Studios and our
-      games. Please don't alter our logos, and don't use our assets in a way that suggests we endorse you or
+      games. You may not alter our logos, and are not permitted to use our assets in a way that suggests we endorse you or
       another product.
     </p>
 

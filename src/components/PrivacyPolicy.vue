@@ -5,8 +5,7 @@
 
     <p>
       This policy explains what information Fifth Edge Studios ("we", "us") collects when you visit
-      fifthedgestudios.com, and what we do with it. Fifth Edge Studios is operated by Ben Holland, who is
-      responsible for this website and the information described here. It covers this website only. Our games are sold and
+      fifthedgestudios.com, and what we do with it. It applies to this website only. Our games are sold and
       distributed through third-party stores, which have their own privacy policies.
     </p>
 
